@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>حجز تذاكر طيران </title>
+    <link rel="stylesheet" href="../css/main.css">
+    <link rel="stylesheet" href="../bootstrap/bootstrap-5.3.7-dist/css/bootstrap.rtl.min.css">
+    <link rel="stylesheet" href="../fonts/icons/fontawesome-free-7.0.0-web/css/all.min.css">
+    <script src="../js/main.js" defer></script>
+    <script src="../js/jquary.js"></script>
+    <script src="../bootstrap/bootstrap-5.3.7-dist/js/bootstrap.bundle.min.js"></script>
+
+
+    <script>
+        $(document).ready(function() {
+            $('i').click(function() {
+                $(this).css('color', 'blue');
+            });
+        });
+    </script>
+</head>
+<body>
+    <div class="container">
+  
+
+            
+            <nav>
+                
+                <div class="logo"></div>
+                <div class="lls">
+                    <div class="item lang">English</div>
+                    <div id="login" class="item login" 
+                        data-bs-toggle="offcanvas" 
+                        data-bs-target="#staticBackdrop">
+                    <i class="fa-solid fa-right-to-bracket"></i> تسجيل الدخول
+                    </div>
+                    <div id="sign" class=" item sign" data-bs-toggle="offcanvas" 
+                        data-bs-target="#staticBackdrop"> <i class="fa-solid fa-user-plus"></i> إنشاء حساب </div>
+                </div>
+            </nav>
+            <header>
+                
+                    <h1> نظام حجز تذاكر الطيران أونلاين  </h1>
+             </header>
+
+                
+            <main>
+                <div class="serach-cont">
+
+                        <form action="" class="sform">
+                            <div class="item flight-type">
+                                <input name="trip" id="one" type="radio" value="oneway">
+                                <label for="one">ذهاب</label>
+                                <input  name="trip" id="two" type="radio" value="roundtrip">
+                                <label for="two">ذهاب وعودة</label>
+                            </div>
+                            <div class="city">
+                                <div class="item">
+                                    <label for="fromcity"> من </label>
+                                    <br>
+                                    <select id="fromcity" name="city">
+                                    <option value="CAI">Cairo (CAI)</option>
+                                    <option value="RUH">Riyadh (RUH)</option>
+                                    <option value="JED">Jeddah (JED)</option>
+                                    <option value="DXB">Dubai (DXB)</option>
+                                    <option value="AUH">Abu Dhabi (AUH)</option>
+                                    <option value="DOH">Doha (DOH)</option>
+                                    <option value="AMM">Amman (AMM)</option>
+                                    <option value="BHD">Beirut (BEY)</option>
+                                    <option value="KWI">Kuwait City (KWI)</option>
+                                    <option value="MCT">Muscat (MCT)</option>
+                                    <option value="TUN">Tunis (TUN)</option>
+                                    <option value="ALG">Algiers (ALG)</option>
+                                    <option value="CMN">Casablanca (CMN)</option>
+                                    <option value="TIP">Tripoli (TIP)</option>
+                                    <option value="KHRT">Khartoum (KRT)</option>
+                                    </select>
+                                </div>
+                                <div class="item">
+                                    <label for="tocity"> إلى </label>
+                                     <br>
+                                    <select id="tocity" name="city">
+                                    <option value="CAI">Cairo (CAI)</option>
+                                    <option value="RUH">Riyadh (RUH)</option>
+                                    <option value="JED">Jeddah (JED)</option>
+                                    <option value="DXB">Dubai (DXB)</option>
+                                    <option value="AUH">Abu Dhabi (AUH)</option>
+                                    <option value="DOH">Doha (DOH)</option>
+                                    <option value="AMM">Amman (AMM)</option>
+                                    <option value="BHD">Beirut (BEY)</option>
+                                    <option value="KWI">Kuwait City (KWI)</option>
+                                    <option value="MCT">Muscat (MCT)</option>
+                                    <option value="TUN">Tunis (TUN)</option>
+                                    <option value="ALG">Algiers (ALG)</option>
+                                    <option value="CMN">Casablanca (CMN)</option>
+                                    <option value="TIP">Tripoli (TIP)</option>
+                                    <option value="KHRT">Khartoum (KRT)</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="date">
+                                <div class="item">
+                                    <label for="ddepart">تاريخ الإقلاع</label>
+                                     <br>
+                                    <input type="date" id="ddepart" name="ddepart">
+                                </div>
+                                <div class="item">
+                                    <label for="dreturn">تاريخ العودة </label>
+                                     <br>
+                                    <input type="date" id="dreturn" name="dreturn">
+                                </div>
+                            </div> 
+                            <div class="item">
+                                <input type="button" value="بحث" id="search">
+                            </div>          
+                        </form>
+                        <div class="result">
+                            <p>النتائج</p>
+                            <hr style="height: 5px; background-color: black;border-radius: 10px;">
+                            <p class="type">الذهاب</p>
+                            <div class="box">
+                            </div>
+                            <hr>
+                            <p class="type">العودة</p>
+                            <div class="box2">
+                        </div>
+                </div>
+
+
+
+
+                      <!-- <div class="time">
+                        <div class="item">
+                            <label for="tdepart">وقت الإقلاع </label>
+                            <input type="time" id="tdepart" name="tdepart">
+                        </div>
+                        <div class="item">
+                            <label for="treturn">وقت العودة </label>
+                            <input type="time" id="treturn" name="treturn">
+                        </div>
+                      </div>  
+                      <div class="nofpass">
+                        <label for="">عدد الركاب</label>
+                        <div class="item">
+                            <label for="adult">البالغين</label>
+                            <input type="number" name="num-of-adults" id="adult"  min="0" value="0">
+
+                        </div>
+                        <div class="item">
+                            <label for="child">الأطفال</label>
+                            <input type="number" name="num-of-child" id="child"  min="0" value="0">
+
+                        </div>
+                      </div>             
+                </form> -->
+                 <!--this is login and sign in form -->
+                
+
+                <div class="offcanvas offcanvas-start" data-bs-backdrop="static" tabindex="-1" id="staticBackdrop" aria-labelledby="staticBackdropLabel">
+  <div class="offcanvas-header">
+    <h5 class="offcanvas-title" id="staticBackdropLabel"> تسجيل الدخول أو إنشاء حساب 
+
+    </h5>
+    <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+  </div>
+  <div class="offcanvas-body">
+    <div>
+     <p style="font-size: 12px; color: #0d6efd; font-weight: 600;" >يجب عليك أن تقوم بتسجيل الدخول أولا لكي تتمكن من الحجز </p>
+               <!-- here is form of login  -->
+                <form id="loginf" style="display: none">
+                    <div class="mb-3">
+                        <label for="inputEmail3" class="form-label">الإيميل</label>
+                        <input type="email" class="form-control" id="inputEmail3">
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="inputPassword3" class="form-label">كلمة المرور</label>
+                        <input type="password" class="form-control" id="inputPassword3">
+                    </div>
+
+                    <button type="submit" class="btn btn-primary w-100">تسجيل الدخول</button>
+
+                    <p class="text-center mt-2">
+                        إذا لم يكن لديك حساب، قم <span style="color: blue; text-decoration: underline;cursor: pointer;" id="signWord">بإنشاء حساب</span>
+                    </p>
+                </form >
+                <!-- here is form of signup  -->
+                <form id="signupf" >
+
+                    <div class="mb-3">
+                    <label for="firstName" class="form-label">الأسم الأول</label>
+                    <input type="text" class="form-control" id="firstName" >
+                    </div>
+
+                    <div class="mb-3">
+                    <label for="lastName" class="form-label">الأسم الثاني </label>
+                    <input type="text" class="form-control" id="lastName" >
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="signemail" class="form-label">الإيميل</label>
+                        <input type="email" class="form-control" id="signemail">
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="signpass" class="form-label"> إنشاء كلمة المرور</label>
+                        <input type="password" class="form-control" id="signpass">
+                    </div>
+                    <div class="mb-3">
+                        <label for="confirpass" class="form-label"> تاكيد كلمة المرور</label>
+                        <input type="password" class="form-control" id="confirpass">
+                    </div>
+                    <div style="display: flex; justify-content: space-evenly;">
+                        <button type="submit" class="btn btn-primary w-90">إنشاء</button>
+                        <button type="button" class=" cancel btn btn-danger w-90">إلغاء</button>
+                    </div>
+
+                    
+                </form>
+
+    </div>
+  </div>
+                </div>
+                 </main>
+                 </div>
+
+    
+     </div>   
+     
+        
+     </body>
+     
+    
+</html>
