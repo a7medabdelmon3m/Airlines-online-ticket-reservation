@@ -1,3 +1,5 @@
+
+
 const flights = [
   //  CAI → RUH
   { from: "CAI", to: "RUH", date: "2025-08-25", time: "10:00", available_seats: 120,
@@ -144,11 +146,11 @@ signWord.addEventListener("click", function () {
   form2.style.display = "block";
   form1.style.display = "none";
 });
+
 let Cancel = document.querySelector(".cancel") ;
 Cancel.addEventListener("click", function () {
   form1.style.display = "block";
   form2.style.display = "none";
 });
-
 
 
