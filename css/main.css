@@ -3,29 +3,25 @@
 ============================= */
 @font-face {
   font-family: 'almarai';
-  src: url('../fonts/Almarai/Almarai-Regular.ttf') format('truetype');
-  
+  src: url('./fonts/Almarai/Almarai-Regular.ttf') format('truetype');
 }
 @font-face {
   font-family: 'almarai';
-  src: url('../fonts/Almarai/Almarai-Bold.ttf') format('truetype');
-  
+  src: url('./fonts/Almarai/Almarai-Bold.ttf') format('truetype');
 }
 @font-face {
   font-family: 'almarai';
-  src: url('../fonts/Almarai/Almarai-ExtraBold.ttf') format('truetype');
-  
+  src: url('./fonts/Almarai/Almarai-ExtraBold.ttf') format('truetype');
 }
 @font-face {
   font-family: 'almarai';
-  src: url('../fonts/Almarai/Almarai-Light.ttf') format('truetype');
-  
+  src: url('./fonts/Almarai/Almarai-Light.ttf') format('truetype');
 }
 @font-face {
   font-family: 'cairo';
-  src: url('../fonts/Cairo/Cairo-VariableFont_slnt,wght.ttf') format('truetype');
-  
+  src: url('./fonts/Cairo/Cairo-VariableFont_slnt,wght.ttf') format('truetype');
 }
+
 :root{
     --main-color:#0d6efd ;
     --main-shadow: 0 2px 8px rgba(0,0,0,0.1) ; 
