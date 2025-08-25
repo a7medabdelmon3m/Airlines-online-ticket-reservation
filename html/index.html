@@ -22,6 +22,7 @@
       <div class="logo">SKY</div>
       <div class="lls">
         <div
+          style="display: block;"
           id="login"
           class="item login"
           data-bs-toggle="offcanvas"
@@ -31,6 +32,7 @@
         </div>
 
         <div
+          style="display: block;"
           id="sign"
           class="item sign"
           data-bs-toggle="offcanvas"
@@ -322,14 +324,14 @@
     aria-labelledby="staticBackdropLabel"
   >
     <div class="offcanvas-header">
-      <h5 class="offcanvas-title" id="staticBackdropLabel">
+      <h5 style="display: block;" class="offcanvas-title" id="staticBackdropLabel">
         تسجيل الدخول أو إنشاء حساب
       </h5>
       <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
     </div>
 
     <div class="offcanvas-body">
-      <p class="note-text">
+      <p style="display: block;" class="note-text">
         يجب عليك أن تقوم بتسجيل الدخول أولا لكي تتمكن من الحجز
       </p>
 
@@ -345,7 +347,7 @@
           <input type="password" class="form-control" id="inputPassword3" />
         </div>
 
-        <button type="submit" class="btn btn-primary w-100">تسجيل الدخول</button>
+        <button id="login-button" type="button" class="btn btn-primary w-100">تسجيل الدخول</button>
 
         <p class="text-center mt-2">
           إذا لم يكن لديك حساب، قم
@@ -357,31 +359,31 @@
       <form id="signupf" >
         <div class="mb-3">
           <label for="firstName" class="form-label">الاسم الأول</label>
-          <input type="text" class="form-control" id="firstName" />
+          <input type="text" class="form-control" id="firstName" required/>
         </div>
 
         <div class="mb-3">
           <label for="lastName" class="form-label">الاسم الثاني</label>
-          <input type="text" class="form-control" id="lastName" />
+          <input type="text" class="form-control" id="lastName" required />
         </div>
 
         <div class="mb-3">
           <label for="signemail" class="form-label">الإيميل</label>
-          <input type="email" class="form-control" id="signemail" />
+          <input type="email" class="form-control" id="signemail" required />
         </div>
 
         <div class="mb-3">
           <label for="signpass" class="form-label">إنشاء كلمة المرور</label>
-          <input type="password" class="form-control" id="signpass" />
+          <input type="password" class="form-control" id="signpass" required />
         </div>
 
         <div class="mb-3">
           <label for="confirpass" class="form-label">تأكيد كلمة المرور</label>
-          <input type="password" class="form-control" id="confirpass" />
+          <input type="password" class="form-control" id="confirpass" required />
         </div>
 
         <div class="d-flex justify-content-between gap-2">
-          <button type="submit" class="btn btn-primary flex-fill">إنشاء</button>
+          <button id="create-acount" type="button" class="btn btn-primary flex-fill">إنشاء</button>
           <button type="button" class="btn btn-danger flex-fill cancel">إلغاء</button>
         </div>
       </form>
@@ -394,8 +396,8 @@
     <!-- صورة المستخدم -->
     <div class="user-avatar">
       <img src="../img/user.png" alt="صورة المستخدم">
-      <h3>الاسم</h3>
-      <p class="user-email">ahmed@example.com</p>
+      <h3></h3>
+      <p class="user-email"></p>
     </div>
 
     <button class="details-edit btn">تعديل البيانات</button>

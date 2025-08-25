@@ -84,6 +84,24 @@ nav .item {
 nav .item:hover {
   color: #ffc107;
 }
+.show-profile{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 22px;
+  padding: 8px;
+  width: 50px;
+  height: 50px;
+ border: solid 5px white;
+ border-radius: 100%;
+ transition: all 0.2s ease; 
+}
+.show-profile:hover{
+  box-shadow: var(--main-shadow);
+  transform: translateY(-2px);
+  border-color: wheat;
+}
+
 
 /* =============================
    header
