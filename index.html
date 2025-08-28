@@ -13,7 +13,7 @@
  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
 
   <!-- JS -->
-  <script src="main.js" defer></script>
+   <script type="module" src="main.js"></script>
   <!-- <script src="../js/jquary.js"></script> -->
   <script>
   $(document).ready(function() {
@@ -149,7 +149,7 @@ $(".count-confirm").click(function(){
       
      <!-- بداية لو حة الحجز  -->
       <div class="container">
-  <div style="display:none ;" class="booking-board">
+  <div style="display: ;" class="booking-board">
     <h2>لوحة الحجز</h2>
 
     <!-- بيانات التذكرة -->
@@ -193,77 +193,145 @@ $(".count-confirm").click(function(){
     </div>
 
     <!-- بيانات الراكب -->
-    <div class="passenger-data">
-      <h3>بيانات الراكب رقم (1) (بالغ)</h3>
-      <div class="form-grid">
+   <form id="passenger-form1" class="passenger-data">
+  <h3>بيانات الراكب رقم (<span id="pass-num"></span>)</h3>
+  
+  <div class="form-grid">
 
-        <!-- الاسم -->
-        <div class="form-group">
-          <label for="fullname1">الاسم كامل</label>
-          <input type="text" id="fullname1" name="fullname1" placeholder="ادخل اسمك الكامل" required>
-        </div>
+    <!-- الاسم -->
+    <div class="form-group">
+      <label for="fullname1">الاسم كامل</label>
+      <input type="text" id="fullname1" name="fullname1" placeholder="ادخل اسمك الكامل" required>
+    </div>
 
-        <!-- تاريخ الميلاد -->
-        <div class="form-group">
-          <label for="birthdate1">تاريخ الميلاد</label>
-          <input type="date" id="birthdate1" name="birthdate1" required>
-        </div>
+    <!-- تاريخ الميلاد -->
+    <div class="form-group">
+      <label for="birthdate1">تاريخ الميلاد</label>
+      <input type="date" id="birthdate1" name="birthdate1" required>
+    </div>
 
-        <!-- الهاتف -->
-        <div class="form-group">
-          <label for="phone1">رقم الهاتف</label>
-          <input type="tel" id="phone1" name="phone1" placeholder="05XXXXXXXX" required>
-        </div>
+    <!-- الهاتف -->
+    <div class="form-group">
+      <label for="phone1">رقم الهاتف</label>
+      <input type="tel" id="phone1" name="phone1" placeholder="05XXXXXXXX" required>
+    </div>
 
-        <!-- النوع -->
-        <div class="form-group">
-          <label>النوع</label>
-          <div class="radio-group">
-            <label for="male1"><input type="radio" id="male1" name="gender1" value="male"> ذكر</label>
-            <label for="female1"><input type="radio" id="female1" name="gender1" value="female"> أنثى</label>
-          </div>
-        </div>
-
-        <!-- الجواز -->
-        <div class="form-group">
-          <label for="passport1">رقم الجواز</label>
-          <input type="text" id="passport1" name="passport1" placeholder="A1234567" required>
-        </div>
-
-        <!-- الجنسية -->
-        <div class="form-group">
-          <label for="nationality1">الجنسية</label>
-          <input type="text" id="nationality1" name="nationality1" placeholder="مصري" required>
-        </div>
-
-        <!-- الدرجة -->
-        <div class="form-group">
-          <label for="class1">الدرجة</label>
-          <select id="class1" name="class1" required>
-            <option value="">اختر الدرجة</option>
-            <option value="economy">اقتصادية</option>
-            <option value="business">درجة رجال أعمال</option>
-            <option value="first">أولى</option>
-          </select>
-        </div>
-
+    <!-- النوع -->
+    <div class="form-group">
+      <label>النوع</label>
+      <div class="radio-group">
+        <label for="male1">
+          <input type="radio" id="male1" name="gender1" value="ذكر" required> ذكر
+        </label>
+        <label for="female1">
+          <input type="radio" id="female1" name="gender1" value="أنثى"> أنثى
+        </label>
       </div>
     </div>
+
+    <!-- الجواز -->
+    <div class="form-group">
+      <label for="passport1">رقم الجواز</label>
+      <input type="text" id="passport1" name="passport1" placeholder="A1234567" required>
+    </div>
+
+    <!-- الجنسية -->
+    <div class="form-group">
+      <label for="nationality1">الجنسية</label>
+      <input type="text" id="nationality1" name="nationality1" placeholder="مصري" required>
+    </div>
+
+    <!-- الدرجة -->
+    <div class="form-group">
+      <label for="class1">الدرجة</label>
+      <select id="class1" name="class1" required>
+        <option value="">اختر الدرجة</option>
+        <option value="economy">اقتصادية</option>
+        <option value="business">درجة رجال أعمال</option>
+        <option value="firstClass">أولى</option>
+      </select>
+    </div>
+
+  </div>
+
+</form>
+
+    
 
     <!-- الأزرار -->
     <div class="actions">
       <button class="btn danger" type="reset">إلغاء</button>
-      <button class="btn confirm" type="submit">تأكيد</button>
+      <button class="btn record confirm" type="button">تأكيد</button>
     </div>
   </div>
 </div>
 
      <!-- نهاية لو حة الحجز  -->
 
+     <!-- بداية لو حة الدفع  -->
+
+      <div style="display: none;" class="booking-board" role="form" aria-labelledby="payment-heading">
+  <h2 id="payment-heading">بيانات الدفع</h2>
+
+  <!-- اختيار وسيلة الدفع -->
+  <div class="passenger-data">
+    <h3>اختر وسيلة الدفع</h3>
+    <div class="form-group">
+      <label for="payment-method">وسيلة الدفع</label>
+      <select id="payment-method" name="payment-method">
+        <option value="card">بطاقة ائتمان / Debit Card</option>
+        <option value="paypal">PayPal</option>
+        <option value="vodafone">Vodafone Cash</option>
+        <option value="fawry">Fawry</option>
+      </select>
+    </div>
+  </div>
+
+  <!-- تفاصيل البطاقة -->
+  <div class="passenger-data" id="card-details">
+    <h3>تفاصيل البطاقة</h3>
+    <div class="form-grid">
+
+      <div class="form-group">
+        <label for="card-number">رقم البطاقة</label>
+        <input id="card-number" name="card-number" type="text" maxlength="16" placeholder="1234 5678 9012 3456" inputmode="numeric" aria-required="true">
+      </div>
+
+      <div class="form-group">
+        <label for="card-name">اسم صاحب البطاقة</label>
+        <input id="card-name" name="card-name" type="text" placeholder="كما هو مكتوب على البطاقة" aria-required="true">
+      </div>
+
+      <div class="form-group">
+        <label for="card-expiry">تاريخ الانتهاء</label>
+        <input id="card-expiry" name="card-expiry" type="month" aria-required="true">
+      </div>
+
+      <div class="form-group">
+        <label for="card-cvv">CVV</label>
+        <input id="card-cvv" name="card-cvv" type="password" maxlength="4" placeholder="***" inputmode="numeric" aria-required="true">
+      </div>
+
+    </div>
+  </div>
+
+  <!-- الأزرار -->
+  <div class="actions">
+    <button type="button" class="btn danger">رجوع</button>
+    <button type="submit" class="btn confirm" id="pay-btn">ادفع الآن</button>
+  </div>
+</div>
+
+
+
+      
+     <!-- نهاية لو حة الدفع  -->
+
+
 <!-- ======================================================================================== -->
 
      <!--بداية  بطاقة تذكرة طيران  -->
-<article style="display: ;" class="ticket-card" role="article" aria-label="تذكرة طيران">
+<article style="" class="ticket-card" role="article" aria-label="تذكرة طيران">
   <!-- رأس التذكرة -->
   <header class="ticket-header">
     <div class="airline-brand" aria-label="شركة الطيران">SKY</div>

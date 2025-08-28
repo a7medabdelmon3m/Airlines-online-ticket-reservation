@@ -1,134 +1,6 @@
-
-
-const flights = [
-  //  CAI → RUH
-  {
-    from: "CAI",
-    to: "RUH",
-    date: "2025-08-25",
-    time: "10:00",
-    seats: { Economy: 80, Business: 30, First_Class: 10 },
-    prices: { Economy: "100$", Business: "200$", First_Class: "300$" }
-  },
-  {
-    from: "CAI",
-    to: "RUH",
-    date: "2025-08-26",
-    time: "18:30",
-    seats: { Economy: 60, Business: 15, First_Class: 5 },
-    prices: { Economy: "120$", Business: "220$", First_Class: "320$" }
-  },
-  {
-    from: "CAI",
-    to: "RUH",
-    date: "2025-08-27",
-    time: "06:45",
-    seats: { Economy: 40, Business: 15, First_Class: 5 },
-    prices: { Economy: "95$", Business: "210$", First_Class: "310$" }
-  },
-
-  //  RUH → CAI
-  {
-    from: "RUH",
-    to: "CAI",
-    date: "2025-08-28",
-    time: "09:00",
-    seats: { Economy: 70, Business: 20, First_Class: 10 },
-    prices: { Economy: "110$", Business: "210$", First_Class: "310$" }
-  },
-  {
-    from: "RUH",
-    to: "CAI",
-    date: "2025-08-29",
-    time: "21:15",
-    seats: { Economy: 50, Business: 15, First_Class: 5 },
-    prices: { Economy: "105$", Business: "205$", First_Class: "305$" }
-  },
-
-  //  CAI → DXB
-  {
-    from: "CAI",
-    to: "DXB",
-    date: "2025-08-25",
-    time: "14:00",
-    seats: { Economy: 60, Business: 20, First_Class: 10 },
-    prices: { Economy: "150$", Business: "250$", First_Class: "400$" }
-  },
-  {
-    from: "CAI",
-    to: "DXB",
-    date: "2025-08-27",
-    time: "22:30",
-    seats: { Economy: 55, Business: 20, First_Class: 10 },
-    prices: { Economy: "145$", Business: "245$", First_Class: "390$" }
-  },
-
-  //  DXB → CAI
-  {
-    from: "DXB",
-    to: "CAI",
-    date: "2025-08-28",
-    time: "18:30",
-    seats: { Economy: 50, Business: 15, First_Class: 5 },
-    prices: { Economy: "160$", Business: "260$", First_Class: "420$" }
-  },
-  {
-    from: "DXB",
-    to: "CAI",
-    date: "2025-08-30",
-    time: "07:00",
-    seats: { Economy: 45, Business: 15, First_Class: 5 },
-    prices: { Economy: "155$", Business: "255$", First_Class: "410$" }
-  },
-
-  //  CAI → DOH
-  {
-    from: "CAI",
-    to: "DOH",
-    date: "2025-08-26",
-    time: "11:15",
-    seats: { Economy: 70, Business: 20, First_Class: 5 },
-    prices: { Economy: "130$", Business: "230$", First_Class: "350$" }
-  },
-  {
-    from: "CAI",
-    to: "DOH",
-    date: "2025-08-28",
-    time: "20:45",
-    seats: { Economy: 75, Business: 20, First_Class: 5 },
-    prices: { Economy: "135$", Business: "240$", First_Class: "360$" }
-  },
-
-  //  DOH → CAI
-  {
-    from: "DOH",
-    to: "CAI",
-    date: "2025-08-29",
-    time: "13:00",
-    seats: { Economy: 55, Business: 15, First_Class: 5 },
-    prices: { Economy: "140$", Business: "245$", First_Class: "365$" }
-  },
-
-  //  CAI → AMM
-  {
-    from: "CAI",
-    to: "AMM",
-    date: "2025-08-25",
-    time: "08:00",
-    seats: { Economy: 70, Business: 30, First_Class: 10 },
-    prices: { Economy: "115$", Business: "215$", First_Class: "330$" }
-  },
-
-  //  AMM → CAI
-  {
-    from: "AMM",
-    to: "CAI",
-    date: "2025-08-27",
-    time: "16:30",
-    seats: { Economy: 60, Business: 20, First_Class: 5 },
-    prices: { Economy: "120$", Business: "220$", First_Class: "340$" }
-  }
-];
+import { generatePNRs, seatNum, weight, getArrival,flights , 
+   cityName, formatArabicDate, getFlightById, saveTempTicket,
+    getTempTickets, clearTempTickets } from "./generate.js";
 
 
 
@@ -136,107 +8,116 @@ let searchbtn = document.getElementById("search");
 let result1 = document.querySelector(".box"); 
 let result2 = document.querySelector(".box2"); 
 let  loging_status = false ; 
-let ticket = {
-  airline: "SKY",
-  status: "مؤكد",
-  ticket_no: "176-1234567890",
-  pnr: "Q7X3N2",
-  from: {
-    code: "CAI",
-    city: "القاهرة",
-    time: "2025-09-25T10:30",
-    readable_time: "10:30 ص",
-    date: "الخميس 25 سبتمبر 2025",
-    flight_no: "MS985"
-  },
-  to: {
-    code: "DXB",
-    city: "دبي",
-    time: "2025-09-25T14:45",
-    readable_time: "2:45 م",
-    date: "الخميس 25 سبتمبر 2025",
-    gate: "B12"
-  },
-  duration: "4س 15د",
-  passenger: {
-    name: "أحمد محمد علي",
-    gender: "ذكر",
-    birth_date: "1994-03-10",
-    nationality: "مصري",
-    passport: "A1234567",
-    class: "اقتصادية",
-    seat: "12A",
-    baggage: "حقيبة مشحونة 23كج + يدوي 7كج"
-  },
-  notes: [
-    "يجب مطابقة الاسم مع جواز السفر.",
-    "الحضور للمطار قبل الإقلاع بـ 3 ساعات للرحلات الدولية.",
-    "تنطبق شروط شركة الطيران على تغيير أو إلغاء التذكرة."
-  ]
-};
-
-function saveTicket(newTicket) {
-  let tickets = JSON.parse(localStorage.getItem("tickets")) || [];
-  tickets.push(newTicket);
-  localStorage.setItem("tickets", JSON.stringify(tickets));
-}
-function getTickets() {
-  return JSON.parse(localStorage.getItem("tickets")) || [];
-}
 
 
 
 
+// let ticket = {
+//   airline: "SKY",
+//   status: "مؤكد",
+//   ticket_no: "176-1234567890",
+//   pnr: "Q7X3N2",
+//   from: {
+//     code: "CAI",
+//     city: "القاهرة",
+//     time: "2025-09-25T10:30",
+//     readable_time: "10:30 ص",
+//     date: "الخميس 25 سبتمبر 2025",
+//     flight_no: "MS985"
+//   },
+//   to: {
+//     code: "DXB",
+//     city: "دبي",
+//     time: "2025-09-25T14:45",
+//     readable_time: "2:45 م",
+//     date: "الخميس 25 سبتمبر 2025",
+//     gate: "B12"
+//   },
+//   duration: "4س 15د",
+//   passenger: {
+//     name: "أحمد محمد علي",
+//     gender: "ذكر",
+//     birth_date: "1994-03-10",
+//     nationality: "مصري",
+//     passport: "A1234567",
+//     class: "اقتصادية",
+//     seat: "12A",
+//     baggage: "حقيبة مشحونة 23كج + يدوي 7كج"
+//   },
+//   notes: [
+//     "يجب مطابقة الاسم مع جواز السفر.",
+//     "الحضور للمطار قبل الإقلاع بـ 3 ساعات للرحلات الدولية.",
+//     "تنطبق شروط شركة الطيران على تغيير أو إلغاء التذكرة."
+//   ]
+// };
+
+// function saveTicket(newTicket) {
+//   let tickets = JSON.parse(localStorage.getItem("tickets")) || [];
+//   tickets.push(newTicket);
+//   localStorage.setItem("tickets", JSON.stringify(tickets));
+// }
+// function getTickets() {
+//   return JSON.parse(localStorage.getItem("tickets")) || [];
+// }
+
+
+
+let currentFlightId = null;
 function createCard(element, container) {
   let card = document.createElement("div"); 
   card.classList.add("available-trips"); 
-
+ card.dataset.flightId = element.id;
   card.innerHTML = `
     <h3>من: ${element.from} ✈ لـ ${element.to}</h3>
     <div class="date-time">
       <p><span>📅التاريخ: </span>   ${element.date}</p>
       <p><span>🕒 الوقت:</span>  ${element.time}</p>
-      <p> <span>💺المقاعد المتاحة: </span>  ${element.seats.Economy + element.seats.First_Class + element.seats.Business }</p>
-      <p><span>💰السياحية:</span>  ${element.prices.Economy}</p>
-      <p><span>💼 رجال الأعمال: </span> ${element.prices.Business}</p>
-      <p> <span>🏆الدرجة الأولى: </span>  ${element.prices.First_Class}</p>
+      <p> <span>💺المقاعد المتاحة: </span>  ${element.seats.economy + element.seats.firstClass + element.seats.business }</p>
+      <p><span>💰السياحية:</span>  ${element.prices.economy}</p>
+      <p><span>💼 رجال الأعمال: </span> ${element.prices.business}</p>
+      <p> <span>🏆الدرجة الأولى: </span>  ${element.prices.firstClass}</p>
     </div>
     <input type="button" value="حجز" class="book btn btn-warning" >
   `;
   
   
-  container.appendChild(card);
+  container.appendChild(card) ;
+
 
 let bookBtn = card.querySelector(".book");
 
 bookBtn.addEventListener("click", function () {
+  currentFlightId = element.id;
+  
   if (loging_status) {
     document.querySelector(".container .booking-board").style.display = "block"; 
     closeOffcanvas();
+
+    // نخزن رقم الرحلة اللي اختارها المستخدم
+    currentFlightId = element.id;
+
     let clone = card.cloneNode(true);
     let btn = clone.querySelector(".book");
     if (btn) btn.remove();
     let booked_card = document.querySelector(".ticket-details");
     booked_card.innerHTML = "" ; 
     booked_card.append(clone)
-    let classes = document.querySelectorAll(".count")  ;
-    classes[0].innerHTML = element.seats.Economy ; 
-    classes[1].innerHTML = element.seats.Business ; 
-    classes[2].innerHTML = element.seats.First_Class ; 
-    
-  } 
 
-  else {
-    
+    let classes = document.querySelectorAll(".count");
+    classes[0].innerHTML = element.seats.economy; 
+    classes[1].innerHTML = element.seats.business; 
+    classes[2].innerHTML = element.seats.firstClass; 
+  } else {
     let offcanvasElement = document.querySelector("#staticBackdrop");
     let bsOffcanvas = new bootstrap.Offcanvas(offcanvasElement);
     bsOffcanvas.show();
     form1.style.display = "block"; 
     form2.style.display = "none";
   }
-  
-
 });
+
+
+ 
 // مكان تاكيد الحجز 
 // *******************************************************************
 // *******************************************************************
@@ -248,6 +129,46 @@ bookBtn.addEventListener("click", function () {
 
 
 }
+function fillData(flightId) {
+  let my_flight = getFlightById(flightId); 
+  let genderInput = document.querySelector('input[name="gender1"]:checked');
+  let classType = document.querySelector("#class1").value;
+
+  return {
+    pnr: generatePNRs(),
+
+    from: {
+      code: my_flight.from,
+      city: cityName(my_flight.from),
+      time: my_flight.time,
+      readable_time: "",
+      date: my_flight.date,
+      flight_no: my_flight.flightNumber
+    },
+
+    to: {
+      code: my_flight.to,
+      city: cityName(my_flight.to),
+      time: getArrival(my_flight.date, my_flight.time, my_flight.duration).arrivalTime,
+      readable_time: "",
+      date: getArrival(my_flight.date, my_flight.time, my_flight.duration).arrivalDate,
+      gate: my_flight.gate
+    },
+
+    duration: my_flight.duration,
+    passenger: {
+      name: document.querySelector("#fullname1").value,
+      gender: genderInput ? genderInput.value : "",
+      birth_date: document.querySelector("#birthdate1").value,
+      nationality: document.querySelector("#nationality1").value,
+      passport: document.querySelector("#passport1").value,
+      classType: classType,
+      seat: seatNum(classType, my_flight.seats[classType]),
+      baggage: weight(classType)
+    }
+  };
+}
+
 
 function searchFlights(from, to, date, container) {
     let found = false;
@@ -490,49 +411,104 @@ function closeOffcanvas() {
 
 
 
-//  localStorage.removeItem("users");
+// localStorage.removeItem("users");
 
 
 
-let passenger_count ; 
-let count_confirm = document.querySelector(".count-confirm") ; 
-count_confirm.addEventListener("click" ,function(){
-  passenger_count = document.querySelector("#numPassengers").value ;
-if (passenger_count === "")
-{
-  alert("يجب أن تدخل عدد الركاب")
-}
-else
-{
-  passenger_count = Number(passenger_count); 
+// المتغيرات الأساسية
+let passenger_count;
+let passengerIndex = 1;  // أول راكب
+let numPassengers = document.getElementById("numPassengers"); // حقل عدد الركاب
+let count_confirm = document.querySelector(".count-confirm");
+let record = document.querySelector(".record");
+
+// حدث زر "تأكيد عدد الركاب"
+count_confirm.addEventListener("click", function(){
+  passenger_count = Number(numPassengers.value);
   
-    numPassengers.disabled = true;  
-    this.disabled = true;           
-    this.innerText = "تم التأكيد ✅"; 
+  if (!passenger_count || passenger_count <= 0) {
+    alert("⚠️ من فضلك أدخل عدد الركاب صحيح");
+    return;
+  }
 
-}
- 
-} ) ;
-function fillData() {
-  return {
-    fullname: document.querySelector("#fullname1").value,
-    birthdate: document.querySelector("#birthdate1").value,
-    phone: document.querySelector("#phone1").value,
-    gender : document.querySelector('input[name="gender1"]:checked').value ,  
-    passport: document.querySelector("#passport1").value,
-    nationality: document.querySelector("#nationality1").value ,
-    class: document.querySelector("#class1").value,
+  // تعطيل الحقل والزر بعد التأكيد
+  numPassengers.disabled = true;      
+  this.disabled = true;               
+  this.innerText = "تم التأكيد ✅";   
 
-  };
-}
+  // بدء إدخال بيانات الركاب
+  passengerIndex = 1;
+  document.querySelector("#pass-num").innerText = passengerIndex;
+  document.querySelector(".passenger-data").style.display = "block";
+});
+
+// حدث زر "حفظ بيانات الراكب"
+record.addEventListener("click", function(){
+  if (!currentFlightId) {
+    alert("⚠️ من فضلك اختر رحلة أولاً");
+    return;
+  }
+
+  let passengerForm = document.querySelector("#passenger-form1");
+  if (!inputValidation(passengerForm)) {
+    alert("⚠️ من فضلك املأ جميع الحقول");
+    return;
+  }
+
+  // تعبئة بيانات التذكرة
+  let ticket_data = fillData(currentFlightId);
+
+  // حفظ التذكرة مؤقتاً
+  saveTempTicket(ticket_data);
+
+  // إعادة ضبط النموذج للراكب التالي
+  passengerForm.reset();
+
+  if (passengerIndex < passenger_count) {
+    passengerIndex++;
+    document.querySelector("#pass-num").innerText = passengerIndex;
+  } else {
+    alert("✅ تم إدخال بيانات جميع الركاب");
+    document.querySelector(".passenger-data").style.display = "none";
+
+    // عرض كل التذاكر المؤقتة في الكونسل للمراجعة
+   
+  }
+});
+ console.log(getTempTickets());
 
 
 
+//=================== data recording =============
 
 
+//=================== payment operation =============
+
+  const paymentSelect = document.getElementById("payment-method");
+  const cardDetails = document.getElementById("card-details");
+  const payBtn = document.getElementById("pay-btn");
+
+  paymentSelect.addEventListener("change", function () {
+    if (this.value === "card") {
+      cardDetails.style.display = "block";
+      payBtn.textContent = "ادفع الآن";
+    } else if (this.value === "paypal") {
+      cardDetails.style.display = "none";
+      payBtn.textContent = "ادفع عبر PayPal";
+    } else if (this.value === "vodafone") {
+      cardDetails.style.display = "none";
+      payBtn.textContent = "ادفع عبر Vodafone Cash";
+    } else if (this.value === "fawry") {
+      cardDetails.style.display = "none";
+      payBtn.textContent = "اطلب كود فوري";
+    }
+  });
+
+  // الحالة الافتراضية = بطاقة
+  cardDetails.style.display = "block";
 
 
-
+  
 
 
 
